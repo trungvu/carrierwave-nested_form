@@ -13,3 +13,5 @@ gem "jquery-rails"
 gem 'carrierwave', '>= 0.5.3'
 
 gem 'nested_form'
+
+ gem 'rake', '~> 0.8.7'
