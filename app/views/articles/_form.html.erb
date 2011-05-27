@@ -1,12 +1,24 @@
-<%= form_for @article do |f| %>
+<%= nested_form_for @article, :html=>{:multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <%= f.label :description %><br />
+  <%= f.text_area :description %>
   </p>
+  <%= f.fields_for :attachments do |attachment_form|  %>
+    <p>
+    <%= attachment_form.label :description %><br />
+    <%= attachment_form.text_area :description %>
+    </p>
+    <p>
+    <%= attachment_form.label :file %><br />
+    <%= attachment_form.file_field :file %>
+    </p>
+    <%= attachment_form.link_to_remove "Remove this attachment" %>
+  <% end %>
+  <%= f.link_to_add "Add attachment", :attachments %>
   <p><%= f.submit %></p>
 <% end %>

@@ -1,7 +1,9 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title, :description
+  attr_accessible :title, :description, :attachments_attributes
 
   has_many :attachments, :as => :attachable
+
+  accepts_nested_attributes_for :attachments
 end
 
 # == Schema Information
