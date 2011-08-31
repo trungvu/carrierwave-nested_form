@@ -10,6 +10,9 @@
   </p>
   <%= f.fields_for :attachments do |attachment_form|  %>
     <p>
+    <%= image_tag(attachment_form.object.file.url) if attachment_form.object.file? %>
+    </p>
+    <p>
     <%= attachment_form.label :description %><br />
     <%= attachment_form.text_area :description %>
     </p>
